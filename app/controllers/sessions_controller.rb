@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     github = GithubService.new
-    session[:token] = foursquare.authenticate!(ENV['FOURSQUARE_CLIENT_ID'], ENV['FOURSQUARE_SECRET'], params[:code])
+    session[:token] = github.authenticate!(ENV['GITHUB_CLIENT'], ENV['GITHUB_SECRET'], params[:code])
     redirect_to root_path
   end
 end
